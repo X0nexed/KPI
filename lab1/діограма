@@ -1,0 +1,45 @@
+erDiagram
+    SERVER {
+        int server_id PK
+        string server_name
+    }
+    
+    TABLE {
+        int table_id PK
+    }
+    
+    MENU {
+        int id PK
+        string name
+        int price
+        string category
+        boolean excise
+    }
+    
+    CHECK {
+        int id PK
+        int server_id FK
+        int table_id FK
+        string fiscal_number
+        string Qr_code_token
+        int total_amount
+        datetime Time_create
+        datetime Time_closed
+    }
+    
+    RUNNER {
+        int id PK
+        int server_id FK
+        int table_id FK
+        int check_id FK
+        int menu_id FK
+        int Quantity
+    }
+
+    %% Зв'язки між сутностями (Relationships)
+    SERVER ||--o{ CHECK : "відкриває"
+    TABLE ||--o{ CHECK : "має"
+    CHECK ||--o{ RUNNER : "містить"
+    MENU ||--o{ RUNNER : "входить в"
+    SERVER ||--o{ RUNNER : "контролює видачу"
+    TABLE ||--o{ RUNNER : "належить"
