@@ -312,3 +312,26 @@ UC11 --|> UC10
 UC12 --|> UC10
 @enduml
 ```
+## 6. Матриця трасування
+
+| **ID Вимоги** | **Шаблон EARS** | **User story**      | **Сценарії (Gherkin)**     | **Use Case (UC)**       |
+| ------------- | --------------- | ------------------- | -------------------------- | ----------------------- |
+| **REQ-01**    | WHEN            | US-02               | SC-01, SC-02               | UC-01                   |
+| **REQ-02**    | WHEN            | US-04               | SC-03, SC-05, SC-06        | UC-02                   |
+| **REQ-03**    | IF              | US-03, US-04        | SC-04                      | UC-02                   |
+| **REQ-04**    | WHEN            | US-04               | SC-03                      | UC-02, UC-03            |
+| **REQ-05**    | WHERE           | US-05               | SC-05                      | UC-04                   |
+| **REQ-06**    | WHERE + WHEN    | US-06               | SC-06                      | UC-05                   |
+| **REQ-07**    | WHEN            | US-07               | SC-07, SC-08               | UC-06                   |
+| **REQ-08**    | WHEN            | US-07               | SC-07                      | UC-06                   |
+| **REQ-09**    | WHILE           | US-05, US-07, US-08 | SC-07, SC-08               | UC-15                   |
+| **REQ-10**    | WHEN            | US-08, US-09        | SC-09                      | UC-07, UC-08            |
+| **REQ-11**    | IF              | US-10               | SC-11                      | UC-11                   |
+| **REQ-12**    | WHEN            | US-10               | SC-10                      | UC-10, UC-11, **UC-16** |
+| **REQ-13**    | WHEN            | US-10               | SC-12, SC-15               | UC-10, UC-12            |
+| **REQ-14**    | WHEN            | US-11               | SC-10, SC-12, SC-15        | UC-13                   |
+| **REQ-15**    | WHEN            | US-11               | SC-10, SC-12, SC-15        | UC-13                   |
+| **REQ-16**    | IF              | US-11               | SC-13                      | UC-13                   |
+| **REQ-17**    | WHEN            | US-12               | SC-10, SC-12, SC-14, SC-15 | UC-09                   |
+| **REQ-18**    | WHEN            | US-12               | SC-10, SC-14               | UC-14                   |
+
