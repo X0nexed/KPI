@@ -243,3 +243,72 @@ Feature: Замовлення, робота цехів та оплата
     Then чек №1 отримує time_closed
     And стіл 5 не отримує статус «вільний», бо чек №2 лишається відкритим
 ```
+
+## 5. Use Case UML-діаграма
+
+```puml
+@startuml
+left to right direction
+
+actor "Гість" as G
+actor "Офіціант" as W
+actor "Бармен" as B
+actor "Кухар" as C
+actor "Expirenza" as EX <<system>>
+actor "ПРРО" as PR <<system>>
+
+B --|> W
+
+rectangle "Ресторанна система" {
+  usecase "UC-01 Прийняти замовлення\n(відкрити чек)" as UC1
+  usecase "UC-02 Додати позицію в чек" as UC2
+  usecase "UC-03 Перерахувати суму" as UC3
+  usecase "UC-04 Додати коментар до страви" as UC4
+  usecase "UC-05 Врахувати акциз" as UC5
+  usecase "UC-06 Відправити бігунок у цех" as UC6
+  usecase "UC-07 Позначити страву готовою" as UC7
+  usecase "UC-08 Сповістити офіціанта" as UC8
+  usecase "UC-09 Закрити чек" as UC9
+  usecase "UC-10 Оплатити" as UC10
+  usecase "UC-11 Оплатити через Expirenza" as UC11
+  usecase "UC-12 Оплатити готівкою/карткою" as UC12
+  usecase "UC-13 Фіскалізувати чек" as UC13
+  usecase "UC-14 Звільнити стіл" as UC14
+  usecase "UC-15 Переглянути чергу цеху" as UC15
+  usecase "UC-16 Сповіщення про оплату від Expirenza" as UC16
+}
+
+G --> UC1
+G --> UC11
+G --> UC12
+
+W --> UC1
+W --> UC2
+W --> UC6
+W --> UC9
+W --> UC12
+W --> UC16
+
+B --> UC7
+C --> UC7
+B --> UC15
+C --> UC15
+
+UC11 --> EX
+EX --> UC16
+UC13 --> PR
+
+UC2 .> UC3 : <<include>>
+UC7 .> UC8 : <<include>>
+UC9 .> UC10 : <<include>>
+UC9 .> UC13 : <<include>>
+UC11 .> UC16 : <<include>>
+
+UC4 .> UC2 : <<extend>>
+UC5 .> UC2 : <<extend>>
+UC14 .> UC9 : <<extend>>
+
+UC11 --|> UC10
+UC12 --|> UC10
+@enduml
+```
