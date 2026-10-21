@@ -278,7 +278,7 @@ rectangle "Ресторанна система" {
   usecase "UC-16 Сповіщення про оплату від Expirenza" as UC16
 }
 
-G --> UC1
+
 G --> UC11
 G --> UC12
 
